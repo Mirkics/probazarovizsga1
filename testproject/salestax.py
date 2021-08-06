@@ -37,5 +37,34 @@ try:
     driver.get('https://witty-hill-0acfceb03.azurestaticapps.net/salestax.html')
     time.sleep(2)
 
+# Mezők, gombok kikeresése
+
+    input_qty = driver.find_element_by_id('quantity')
+    input_subtotal = driver.find_element_by_id('subtotal')
+    input_salestax = driver.find_element_by_id('salestax')
+    total = driver.find_element_by_id('gtotal')
+
+    btn_subtotal = driver.find_element_by_id('subtotalBtn')
+    btn_calculate = driver.find_element_by_id('gtotalBtn')
+
+# TC01: üres kitöltés helyessége
+    btn_subtotal.click()
+    btn_calculate.click()
+    assert input_salestax.get_attribute('value') == '0.00'
+    assert total.get_attribute('value') == '4.95'
+
+# TC02: 6" x 6" Volkanik Ice kitöltés helyessége
+    # tesztadatok
+    #product_data = '6" x 6" Volkanik Ice'
+    #qty = 1
+
+    Select(driver.find_element_by_name('price')).select_by_value('6" x 6" Volkanik Ice')
+    input_qty.send_keys('1')
+    btn_subtotal.click()
+    btn_calculate.click()
+
+    assert input_salestax.get_attribute('value') == '4.95'
+    assert total.get_attribute('value') == '9.90'
+
 finally:
     driver.close()
