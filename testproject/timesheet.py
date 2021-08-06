@@ -38,5 +38,16 @@ try:
     driver.get('https://witty-hill-0acfceb03.azurestaticapps.net/timesheet.html')
     time.sleep(2)
 
+# Mezők kikeresése
+
+    email = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[1]')\
+        .get_attribute('placeholder')
+    next_btn = driver.find_element_by_xpath('//*[@id="buttons"]/input').get_attribute('disabled')
+
+    assert email == 'artist@moviemakr.com'
+    assert next_btn == 'disabled'
+
+
+
 finally:
     driver.close()
