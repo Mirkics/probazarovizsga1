@@ -11,3 +11,22 @@ Teszteld le, hogy az általad megadott adatokkal tölti-e ki a jegyet az applik�
 
 Nem kell negatív tesztesetet készítened. Egy pozitív teszteset teljesen elég lesz.'''
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+from selenium.webdriver.support.ui import Select
+
+options = Options()
+options.headless = False
+
+
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+
+try:
+    # Oldal betöltése
+    driver.get('https://witty-hill-0acfceb03.azurestaticapps.net/hogwards.html')
+    time.sleep(2)
+
+finally:
+    driver.close()
