@@ -54,7 +54,10 @@ try:
     assert next_btn.get_attribute('ng-disabled') == 'formTimesheet.$invalid'
 
 # TC02: helyes kitöltés helyes köszönet képernyő
-
+    #test@bela.hu
+    #2 hours and 0 minutes
+    #working hard
+    #types of work: Time working on visual effects for movie
 
 
 finally:
