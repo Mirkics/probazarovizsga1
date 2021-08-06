@@ -49,9 +49,12 @@ try:
 # helytelen email cím 'valaki@@valaki.com'
 
     email.send_keys('valaki@@valaki.com')
+    time.sleep(1)
     next_btn.click()
 
     assert next_btn.get_attribute('ng-disabled') == 'formTimesheet.$invalid'
+
+    email.clear()
 
 # TC02: helyes kitöltés helyes köszönet képernyő
     #test@bela.hu
@@ -59,6 +62,22 @@ try:
     #working hard
     #types of work: Time working on visual effects for movie
 
+    email.send_keys('test@bela.hu')
+
+    time_hour = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[2]').send_keys('2')
+    time_min = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[3]').send_keys('0')
+    message = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/textarea').send_keys('working hard')
+    types_of_work = driver.find_element_by_xpath('//*[@id="dropDown"]').send_keys('Time working on visual effects for movie')
+    time.sleep(1)
+    next_btn.click()
+    thanks = driver.find_elements_by_xpath('//*[@id="section-thankyou"]/div/p[1]')
+
+    #assert thanks == 'Thank you' + email
+
+    hour_check = driver.find_element_by_xpath('//*[@id="section-thankyou"]/div/p[2]/span[1]').get_attribute('value')
+    min_check = driver.find_element_by_xpath('//*[@id="section-thankyou"]/div/p[2]/span[2]').get_attribute('value')
+    assert time_hour == hour_check
+    assert time_min == min_check
 
 finally:
     driver.close()
