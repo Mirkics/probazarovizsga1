@@ -40,12 +40,20 @@ try:
 
 # Mezők kikeresése
 
-    email = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[1]')\
-        .get_attribute('placeholder')
-    next_btn = driver.find_element_by_xpath('//*[@id="buttons"]/input').get_attribute('disabled')
+    email = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[1]')
+    next_btn = driver.find_element_by_xpath('//*[@id="buttons"]/input')
 
-    assert email == 'artist@moviemakr.com'
-    assert next_btn == 'disabled'
+    assert email.get_attribute('placeholder') == 'artist@moviemakr.com'
+    assert next_btn.get_attribute('ng-disabled') == 'formTimesheet.$invalid'
+
+# helytelen email cím 'valaki@@valaki.com'
+
+    email.send_keys('valaki@@valaki.com')
+    next_btn.click()
+
+    assert next_btn.get_attribute('ng-disabled') == 'formTimesheet.$invalid'
+
+# TC02: helyes kitöltés helyes köszönet képernyő
 
 
 
