@@ -40,5 +40,32 @@ try:
     driver.get('https://witty-hill-0acfceb03.azurestaticapps.net/lottery.html')
     time.sleep(2)
 
+    btn_generate = driver.find_element_by_id('draw-number')
+    btn_reset = driver.find_element_by_id('reset-numbers')
+    section_area = driver.find_element_by_id('container').get_attribute('value')
+
+# TC01: lotto huzas elott nem ismertek a szamok
+
+    # assert section_area == 'empty'
+
+# TC02: lottohuzás működik
+    #6-szor meg kell nyomni a generate gombot
+    for i in range(6):
+        btn_generate.click()
+
+
+
+    # assert section_area == '6' # 6 szám található azon a területen
+
+    # egy lista kell a kihúzott számokból
+    # ball_list = ()
+    # számok >0 és <60
+
+# TC03: lottohúzás befejeződött. nincs hetedik
+
+    # assert ball_list == 6
+    # btn_reset.click()
+    # assert section_area == 'empty'
+
 finally:
     driver.close()
