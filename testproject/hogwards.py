@@ -28,7 +28,7 @@ try:
 
     # tesztadatok
     name = 'Hermione Granger'
-    date = '002021.08.16.'
+    date = '2021.08.16.'
     time = '17:25'
 
 # tesztadatok felvitele
