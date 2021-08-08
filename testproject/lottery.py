@@ -42,7 +42,7 @@ try:
 
     btn_generate = driver.find_element_by_id('draw-number')
     btn_reset = driver.find_element_by_id('reset-numbers')
-    section_area = driver.find_element_by_id('container').get_attribute('value')
+    section_area = driver.find_elements_by_id('container')
 
 # TC01: lotto huzas elott nem ismertek a szamok
 
