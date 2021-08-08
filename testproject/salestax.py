@@ -52,16 +52,19 @@ try:
     btn_calculate.click()
     assert input_salestax.get_attribute('value') == '0.00'
     assert total.get_attribute('value') == '4.95'
-
+    time.sleep(2)
 # TC02: 6" x 6" Volkanik Ice kitöltés helyessége
     # tesztadatok
     #product_data = '6" x 6" Volkanik Ice'
     #qty = 1
 
-    Select(driver.find_element_by_name('price')).select_by_value('6" x 6" Volkanik Ice')
+    Select(driver.find_element_by_name('price')).select_by_visible_text('6" x 6" Volkanik Ice')
     input_qty.send_keys('1')
+    time.sleep(2)
     btn_subtotal.click()
+    time.sleep(2)
     btn_calculate.click()
+    time.sleep(2)
 
     assert input_salestax.get_attribute('value') == '4.95'
     assert total.get_attribute('value') == '9.90'

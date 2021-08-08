@@ -64,12 +64,17 @@ try:
 
     email.send_keys('test@bela.hu')
 
-    time_hour = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[2]').send_keys('2')
-    time_min = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[3]').send_keys('0')
-    message = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/textarea').send_keys('working hard')
-    types_of_work = driver.find_element_by_xpath('//*[@id="dropDown"]').send_keys('Time working on visual effects for movie')
+    time_hour = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[2]')
+    time_hour.send_keys('2')
+    time_min = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/input[3]')
+    time_min.send_keys('0')
+    message = driver.find_element_by_xpath('//*[@id="section-timesheet"]/div[1]/form/textarea')
+    message.send_keys('working hard')
+    types_of_work = driver.find_element_by_xpath('//*[@id="dropDown"]')
+    types_of_work.send_keys('Time working on visual effects for movie')
     time.sleep(1)
     next_btn.click()
+    time.sleep(2)
     thanks = driver.find_elements_by_xpath('//*[@id="section-thankyou"]/div/p[1]')
 
     #assert thanks == 'Thank you' + email
