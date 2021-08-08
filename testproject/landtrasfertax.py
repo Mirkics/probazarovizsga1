@@ -57,11 +57,15 @@ try:
     assert tax_dollar == ''
 
 # TC02: helyes kitöltés helyes kitöltése
+
     est_of_prop_field.send_keys('3333')
 
     button_go.click()
-    print(tax_field)
-    assert tax_dollar == '16.665'  #AssertionError
+    tax_field = driver.find_element_by_id('tax')
+    tax_dollar = tax_field.get_attribute('value')
+    time.sleep(2)
+    #print(tax_field)
+    assert tax_dollar == '16.665'
 
 finally:
     driver.close()
